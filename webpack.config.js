@@ -31,5 +31,10 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      bebel: "babel-polyfill"
+    })
+  ]
 };
