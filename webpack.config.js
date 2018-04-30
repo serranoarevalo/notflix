@@ -1,6 +1,7 @@
 const path = require("path");
 const merge = require("webpack-merge");
 const webpack = require("webpack");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 const MODE = process.env.npm_lifecycle_event;
 
@@ -12,7 +13,7 @@ const PATHS = {
 
 module.exports = {
   entry: {
-    app: PATHS.app
+    app: ["babel-polyfill", PATHS.app]
   },
   output: {
     path: PATHS.build,
@@ -24,17 +25,10 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"]
-          }
+          loader: "babel-loader"
         }
       }
     ]
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      bebel: "babel-polyfill"
-    })
-  ]
+  plugins: [new CleanWebpackPlugin(["build"])]
 };
