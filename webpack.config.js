@@ -2,6 +2,7 @@ const path = require("path");
 const merge = require("webpack-merge");
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const MODE = process.env.npm_lifecycle_event;
 
@@ -11,7 +12,7 @@ const PATHS = {
   style: path.join(__dirname, "src/css/styles.css")
 };
 
-module.exports = {
+const commonConfig = {
   entry: {
     app: ["babel-polyfill", PATHS.app]
   },
@@ -29,6 +30,19 @@ module.exports = {
         }
       }
     ]
-  },
-  plugins: [new CleanWebpackPlugin(["build"])]
+  }
 };
+
+if (MODE === "build") {
+  module.exports = merge(commonConfig, {
+    plugins: [new CleanWebpackPlugin(PATHS.build), new HtmlWebpackPlugin()]
+  });
+}
+
+if (MODE === "start") {
+  module.exports = merge(commonConfig, {
+    devServer: {
+      contentBase: path.join(__dirname, "build")
+    }
+  });
+}

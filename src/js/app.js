@@ -1,2 +1,1 @@
-const hello = async () => "hello";
-hello();
+alert("hi");
