@@ -31,6 +31,10 @@ const commonConfig = {
         use: {
           loader: "babel-loader"
         }
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: ["url-loader?limit=10000", "img-loader"]
       }
     ]
   },
@@ -74,7 +78,7 @@ if (MODE === "build") {
     },
     plugins: [
       new CleanWebpackPlugin(PATHS.build),
-      new ExtractTextPlugin("styles.css")
+      new ExtractTextPlugin("css/styles.css")
     ]
   });
 }
