@@ -3,6 +3,9 @@ const merge = require("webpack-merge");
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 const MODE = process.env.npm_lifecycle_event;
 
@@ -41,15 +44,43 @@ const commonConfig = {
 
 if (MODE === "build") {
   module.exports = merge(commonConfig, {
-    plugins: [new CleanWebpackPlugin(PATHS.build)]
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin({
+          cache: true,
+          parallel: true,
+          sourceMap: true
+        })
+      ]
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: [
+              {
+                loader: "css-loader",
+                options: {
+                  minimize: true
+                }
+              },
+              { loader: "postcss-loader" }
+            ]
+          })
+        }
+      ]
+    },
+    plugins: [
+      new CleanWebpackPlugin(PATHS.build),
+      new ExtractTextPlugin("styles.css")
+    ]
   });
 }
 
 if (MODE === "start") {
   module.exports = merge(commonConfig, {
-    entry: {
-      style: PATHS.style
-    },
     devtool: "eval-source-map",
     devServer: {
       contentBase: path.join(__dirname, "build"),
