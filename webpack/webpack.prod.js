@@ -2,20 +2,11 @@ const path = require("path");
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = function(PATHS) {
   return {
-    optimization: {
-      minimizer: [
-        new UglifyJsPlugin({
-          cache: true,
-          parallel: true,
-          sourceMap: true
-        })
-      ]
-    },
     module: {
       rules: [
         {
@@ -37,7 +28,15 @@ module.exports = function(PATHS) {
     },
     plugins: [
       new CleanWebpackPlugin(PATHS.build),
-      new ExtractTextPlugin(PATHS.styles)
+      new ExtractTextPlugin("styles.css"),
+      new webpack.optimize.AggressiveMergingPlugin(),
+      new CompressionPlugin({
+        asset: "[path].gz[query]",
+        algorithm: "gzip",
+        test: /\.js$|\.css$|\.html$/,
+        threshold: 10240,
+        minRatio: 0.8
+      })
     ]
   };
 };
