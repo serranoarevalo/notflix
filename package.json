@@ -1,7 +1,8 @@
 {
   "name": "nomflix",
   "version": "1.0.0",
-  "description": "Cloning Netflix's Front Page with VanillaJS, Flexbox Grid and Webpack",
+  "description":
+    "Cloning Netflix's Front Page with VanillaJS, Flexbox Grid and Webpack",
   "main": "index.js",
   "repository": "https://github.com/serranoarevalo/nomflix",
   "author": "Nicolás Serrano Arévalo <itnico.las.me@gmail.com>",
@@ -35,8 +36,9 @@
     "webpack-merge": "^4.1.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "start":
+      "webpack-dev-server --mode development --config webpack/webpack.common.js",
+    "build": "webpack --mode production --config webpack/webpack.common.js"
   },
   "dependencies": {}
 }
