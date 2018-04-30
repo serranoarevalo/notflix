@@ -37,13 +37,7 @@ const commonConfig = {
         use: ["url-loader?limit=10000", "img-loader"]
       }
     ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, "../public/index.html"),
-      title: "Nomflix"
-    })
-  ]
+  }
 };
 
 if (MODE === "build") {

@@ -1,2 +1,2 @@
 import "../css/styles.css";
-console.log("lallalllslslsl");
+console.log("");

@@ -23,11 +23,19 @@ module.exports = function(PATHS) {
               { loader: "postcss-loader" }
             ]
           })
+        },
+        {
+          test: /\.(html)$/,
+          use: [
+            "file-loader?name=[path][name].[ext]!extract-loader!html-loader"
+          ]
         }
       ]
     },
     plugins: [
-      new CleanWebpackPlugin(PATHS.build),
+      new CleanWebpackPlugin(PATHS.build, {
+        root: process.cwd()
+      }),
       new ExtractTextPlugin("styles.css"),
       new webpack.optimize.AggressiveMergingPlugin(),
       new CompressionPlugin({

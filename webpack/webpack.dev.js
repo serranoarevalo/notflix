@@ -1,11 +1,13 @@
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = function(PATHS) {
   return {
     devtool: "eval-source-map",
     devServer: {
-      contentBase: path.join(__dirname, PATHS.build),
+      contentBase: path.join(__dirname, "../src"),
+      publicPath: "/",
       hot: true,
       inline: true,
       progress: true,
@@ -32,6 +34,12 @@ module.exports = function(PATHS) {
         }
       ]
     },
-    plugins: [new webpack.HotModuleReplacementPlugin()]
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: path.join(__dirname, "../src/index.html"),
+        title: "Nomflix"
+      }),
+      new webpack.HotModuleReplacementPlugin()
+    ]
   };
 };

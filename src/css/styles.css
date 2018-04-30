@@ -1,3 +1,2 @@
-body {
-  background-image: url("../img/bg.png");
-}
+@import "default.css";
+@import "header.css";
