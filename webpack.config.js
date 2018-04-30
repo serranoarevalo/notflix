@@ -30,19 +30,55 @@ const commonConfig = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "public/index.html",
+      title: "Nomflix"
+    })
+  ]
 };
 
 if (MODE === "build") {
   module.exports = merge(commonConfig, {
-    plugins: [new CleanWebpackPlugin(PATHS.build), new HtmlWebpackPlugin()]
+    plugins: [new CleanWebpackPlugin(PATHS.build)]
   });
 }
 
 if (MODE === "start") {
   module.exports = merge(commonConfig, {
+    entry: {
+      style: PATHS.style
+    },
+    devtool: "eval-source-map",
     devServer: {
-      contentBase: path.join(__dirname, "build")
-    }
+      contentBase: path.join(__dirname, "build"),
+      hot: true,
+      inline: true,
+      progress: true,
+      port: 8000
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [
+            {
+              loader: "style-loader"
+            },
+            {
+              loader: "css-loader",
+              options: {
+                importLoaders: 1
+              }
+            },
+            {
+              loader: "postcss-loader"
+            }
+          ]
+        }
+      ]
+    },
+    plugins: [new webpack.HotModuleReplacementPlugin()]
   });
 }
