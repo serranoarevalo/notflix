@@ -1,18 +1,25 @@
 const video = document.querySelector(".js-hero-video__file");
 const videoPlaceholder = document.querySelector(".js-hero-video__placeholder");
+const volumeToggle = document.querySelector(".js-hero-video__volume");
 const CLASS_NAME = "js-hidden";
 
-video.addEventListener("click", toggleVideoMute);
 video.addEventListener("canplay", togglePlaceholder);
 video.addEventListener("ended", togglePlaceholder);
+volumeToggle.addEventListener("click", toggleVideoMute);
 window.addEventListener("scroll", handleScroll);
 
 video.autoplay = true;
 video.volume = 0.1;
-video.muted = true;
+video.muted = false;
 
 function toggleVideoMute() {
-  video.muted = !video.muted;
+  if (!video.muted) {
+    video.muted = true;
+    volumeToggle.innerHTML = '<i class="fas fa-volume-off"></i>';
+  } else {
+    video.muted = false;
+    volumeToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+  }
 }
 
 function pauseVideo() {
@@ -48,5 +55,5 @@ function togglePlaceholder() {
     } else {
       classList.add(CLASS_NAME);
     }
-  }, 10000);
+  }, 1000);
 }

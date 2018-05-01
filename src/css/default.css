@@ -8,6 +8,7 @@ html {
   font-size: 14px;
   background-color: var(--bgColor, #141414);
   min-height: 2000vh;
+  color: white;
 }
 a {
   color: inherit;
