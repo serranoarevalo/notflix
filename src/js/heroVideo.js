@@ -1,10 +1,13 @@
-const video = document.querySelector(".hero-video__file");
+const video = document.querySelector(".js-hero-video__file");
+const videoPlaceholder = document.querySelector(".js-hero-video__placeholder");
+const CLASS_NAME = "js-hidden";
 
 video.addEventListener("click", toggleVideoMute);
+video.addEventListener("canplay", togglePlaceholder);
+video.addEventListener("ended", togglePlaceholder);
 window.addEventListener("scroll", handleScroll);
 
 video.autoplay = true;
-video.loop = true;
 video.volume = 0.1;
 video.muted = true;
 
@@ -35,4 +38,15 @@ function handleScroll(e) {
   } else {
     resumeVideo();
   }
+}
+
+function togglePlaceholder() {
+  const { classList } = videoPlaceholder;
+  setTimeout(() => {
+    if (classList.contains(CLASS_NAME)) {
+      classList.remove(CLASS_NAME);
+    } else {
+      classList.add(CLASS_NAME);
+    }
+  }, 10000);
 }

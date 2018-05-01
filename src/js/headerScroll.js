@@ -1,4 +1,4 @@
-const header = document.querySelector(".site-header");
+const header = document.querySelector(".js-site-header");
 const CLASS_NAME = "scrolled";
 
 window.addEventListener("scroll", handleScroll);

@@ -14,7 +14,7 @@
 
 <body>
 
-    <header class="site-header">
+    <header class="site-header js-site-header">
         <div class="site-header__logo-container">
             <img src="<%=require("./img/logo.png")%>" class="site-header__logo">
         </div>
@@ -68,8 +68,9 @@
     </header>
 
     <div class="hero-video">
-        <div class="hero-vide__overlay"></div>
-        <video src="<%=require("./videos/sintel.ogv")%>" class="hero-video__file"></video>
+        <img src="<%= require("./img/videoPlaceholder.jpg") %>" class="hero-video__placeholder js-hero-video__placeholder">
+        <div class="hero-video__overlay"></div>
+        <video src="<%=require("./videos/sintel.ogv")%>" class="hero-video__file js-hero-video__file"></video>
     </div>
     
 
