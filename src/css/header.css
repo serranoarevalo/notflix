@@ -3,15 +3,16 @@
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 18px 75px;
+  padding: 5px 50px;
   justify-content: space-between;
   transition: background-color 0.3s linear;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 10;
   & .site-header__logo-container {
     & .site-header__logo {
-      height: 25px;
+      height: 60px;
     }
   }
   & .site-header__nav {
@@ -66,7 +67,7 @@
           transition: all 0.2s linear;
           transform-origin: 100% 100%;
           font-size: 14px;
-          background-color: rgba(0, 0, 0, 0.5);
+          background-color: rgba(0, 0, 0, 0);
           height: 27px;
           caret-color: white;
           width: 0px;
@@ -80,6 +81,7 @@
       }
       & .site-header__search-container.active {
         border-color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(0, 0, 0, 0.8);
       }
       & .site-header__search-container.active .site-header__search {
         width: 250px;
