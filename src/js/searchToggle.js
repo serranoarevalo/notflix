@@ -35,5 +35,4 @@ function hideSearch() {
   searchButton.classList.remove(CLASS_NAME);
   searchInput.blur();
   searchInput.value = "";
-  console.log(searchInput.value);
 }

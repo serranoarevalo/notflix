@@ -7,6 +7,7 @@ html {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   background-color: var(--bgColor, #141414);
+  min-height: 120vh;
 }
 a {
   color: inherit;

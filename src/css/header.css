@@ -5,6 +5,10 @@
   align-items: center;
   padding: 18px 75px;
   justify-content: space-between;
+  transition: background-color 0.3s linear;
+  position: fixed;
+  top: 0;
+  width: 100%;
   & .site-header__logo-container {
     & .site-header__logo {
       height: 25px;
@@ -86,4 +90,8 @@
       }
     }
   }
+}
+
+.site-header.scrolled {
+  background-color: var(--black, #141414);
 }
