@@ -3,7 +3,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 20px 60px;
+  padding: 20px 75px;
   & .site-header__logo-container {
     & .site-header__logo {
       height: 25px;
@@ -22,9 +22,33 @@
   }
   & .site-header__nav :any-link {
     color: #e5e5e5;
-    transition: color 0.3s linear;
+    transition: color 0.1s linear;
   }
   & .site-header__nav :any-link:hover {
-    color: color(rgb(229, 229, 229) alpha(-30%));
+    color: color(rgb(229, 229, 229) alpha(-20%));
+  }
+  & .site-header__menu {
+    display: flex;
+    align-items: center;
+    & .site-header__item {
+      color: white;
+      font-size: 20px;
+      position: relative;
+      margin-left: 30px;
+      cursor: pointer;
+      & .site-header__notification-wrapper {
+        position: absolute;
+        top: -10px;
+        left: 5px;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        background-color: var(--accent, #d32f27);
+      }
+    }
   }
 }
