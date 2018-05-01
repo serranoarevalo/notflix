@@ -1,16 +1,14 @@
 const video = document.querySelector(".js-hero-video__file");
-const videoPlaceholder = document.querySelector(".js-hero-video__placeholder");
 const volumeToggle = document.querySelector(".js-hero-video__volume");
 const CLASS_NAME = "js-hidden";
 
-video.addEventListener("canplay", togglePlaceholder);
-video.addEventListener("ended", togglePlaceholder);
 volumeToggle.addEventListener("click", toggleVideoMute);
 window.addEventListener("scroll", handleScroll);
 
-video.autoplay = true;
+video.autoplay = false;
 video.volume = 0.1;
 video.muted = false;
+video.poster = require("../img/videoPlaceholder.jpg");
 
 function toggleVideoMute() {
   if (!video.muted) {
