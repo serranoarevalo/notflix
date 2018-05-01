@@ -34,12 +34,6 @@ module.exports = function(PATHS) {
         }
       ]
     },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: path.join(__dirname, "../src/index.html"),
-        title: "Nomflix"
-      }),
-      new webpack.HotModuleReplacementPlugin()
-    ]
+    plugins: [new webpack.HotModuleReplacementPlugin()]
   };
 };

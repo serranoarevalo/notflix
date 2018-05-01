@@ -23,12 +23,6 @@ module.exports = function(PATHS) {
               { loader: "postcss-loader" }
             ]
           })
-        },
-        {
-          test: /\.(html)$/,
-          use: [
-            "file-loader?name=[path][name].[ext]!extract-loader!html-loader"
-          ]
         }
       ]
     },
