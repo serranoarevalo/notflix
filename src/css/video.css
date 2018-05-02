@@ -12,14 +12,19 @@
     max-width: 100%;
   }
   & .hero-video__overlay {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-image: linear-gradient(
+      to bottom,
+      rgb(20, 20, 20, 0.3) 60%,
+      rgba(20, 20, 20, 1) 100%
+    );
     z-index: 2;
     width: 100%;
     top: 0;
+    height: 100%;
   }
   & .hero-video__volume {
     z-index: 2;
-    bottom: 100px;
+    bottom: 150px;
     right: 100px;
     font-size: 25px;
     border: 2px solid white;
