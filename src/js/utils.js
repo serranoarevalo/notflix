@@ -1,25 +1,30 @@
 export const getPreviousAll = element => {
   const previousAllFound = [];
   const getPrevious = element => {
-    const previousFound = element.previousElementSibling;
-    if (previousFound !== null) {
+    if (element !== null) {
       previousAllFound.push(element);
-      getPrevious(previousFound);
+      const previousFound = element.previousElementSibling;
+      if (previousFound !== null) {
+        getPrevious(previousFound);
+      }
     }
   };
-  getPrevious(element);
+  getPrevious(element.previousElementSibling);
   return previousAllFound;
 };
 
 export const getNextAll = element => {
+  const target = element;
   const nextAllFound = [];
   const getAll = element => {
-    const nextFound = element.nextElementSibling;
-    if (nextFound !== null) {
+    if (element !== null) {
       nextAllFound.push(element);
-      getAll(nextFound);
+      const nextFound = element.nextElementSibling;
+      if (nextFound !== null) {
+        getAll(nextFound);
+      }
     }
   };
-  getAll(element);
+  getAll(element.nextElementSibling);
   return nextAllFound;
 };

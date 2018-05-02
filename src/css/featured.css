@@ -16,9 +16,21 @@
     grid-gap: 10px;
     padding: var(--containerPadding, 0px 60px);
     & .featured__movie {
+      transition: transform 0.2s linear;
+      transform: none;
       & img {
         max-width: 100%;
       }
+      &:hover {
+        transform: scale(1.2);
+        z-index: 5;
+      }
+    }
+    & .featured__movie.next {
+      transform: translateX(30px);
+    }
+    & .featured__movie.previous {
+      transform: translateX(-30px);
     }
   }
 }
