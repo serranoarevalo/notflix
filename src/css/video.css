@@ -15,7 +15,7 @@
     background-image: linear-gradient(
       to bottom,
       rgb(20, 20, 20, 0.3) 60%,
-      rgba(20, 20, 20, 1) 100%
+      rgba(20, 20, 20, 1) 95%
     );
     z-index: 2;
     width: 100%;
@@ -25,7 +25,7 @@
   & .hero-video__volume {
     z-index: 2;
     bottom: 150px;
-    right: 100px;
+    right: 60px;
     font-size: 25px;
     border: 2px solid white;
     width: 55px;

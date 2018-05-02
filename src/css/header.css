@@ -27,11 +27,11 @@
     }
   }
   & .site-header__nav :any-link {
-    color: #e5e5e5;
+    color: var(--grey, #e5e5e5);
     transition: color 0.1s linear;
   }
   & .site-header__nav :any-link:hover {
-    color: color(rgb(229, 229, 229) alpha(-20%));
+    color: color(var(--grey, rgb(229, 229, 229)) alpha(-20%));
   }
   & .site-header__menu {
     display: flex;

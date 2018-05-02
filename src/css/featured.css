@@ -1,3 +1,24 @@
 .featured {
-  margin-top: -30px;
+  margin-top: -10px;
+  z-index: 4;
+  position: relative;
+  & .featured__title {
+    font-size: 1.5vw;
+    text-transform: uppercase;
+    color: rgb(229, 229, 229);
+    margin-bottom: 20px;
+    padding: var(--containerPadding, 0px 60px);
+  }
+  & .featured__movies {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+    grid-gap: 10px;
+    padding: var(--containerPadding, 0px 60px);
+    & .featured__movie {
+      & img {
+        max-width: 100%;
+      }
+    }
+  }
 }
