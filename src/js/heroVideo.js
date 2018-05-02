@@ -3,9 +3,10 @@ const volumeToggle = document.querySelector(".js-hero-video__volume");
 const CLASS_NAME = "js-hidden";
 
 volumeToggle.addEventListener("click", toggleVideoMute);
+video.addEventListener("ended", resetVideoPoster);
 window.addEventListener("scroll", handleScroll);
 
-video.autoplay = false;
+video.autoplay = true;
 video.volume = 0.1;
 video.muted = false;
 video.poster = require("../img/videoPlaceholder.jpg");
@@ -36,7 +37,7 @@ function resumeVideo() {
   }
 }
 
-function handleScroll(e) {
+function handleScroll() {
   const scrollHeight = window.scrollY;
   if (scrollHeight > 350) {
     pauseVideo();
@@ -45,13 +46,7 @@ function handleScroll(e) {
   }
 }
 
-function togglePlaceholder() {
-  const { classList } = videoPlaceholder;
-  setTimeout(() => {
-    if (classList.contains(CLASS_NAME)) {
-      classList.remove(CLASS_NAME);
-    } else {
-      classList.add(CLASS_NAME);
-    }
-  }, 1000);
+function resetVideoPoster() {
+  video.autoplay = false;
+  video.load();
 }
