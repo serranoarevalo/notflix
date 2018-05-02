@@ -1,3 +1,5 @@
+import { getPreviousAll, getNextAll } from "./utils";
+
 const moviePosters = document.querySelectorAll(".featured__movie");
 
 const postersArray = Array.from(moviePosters);
@@ -7,14 +9,7 @@ postersArray.forEach(poster =>
 );
 
 function handleMouseOver() {
-  const previosPosters = [];
-  function getPrevious(element) {
-    const previousFound = element.previousElementSibling;
-    if (previousFound !== null) {
-      previosPosters.push(element);
-      getPrevious(previousFound);
-    }
-  }
-  getPrevious(this);
-  console.log(previosPosters);
+  const allPrevious = getPreviousAll(this);
+  const allNext = getNextAll(this);
+  console.log(allPrevious, allNext);
 }

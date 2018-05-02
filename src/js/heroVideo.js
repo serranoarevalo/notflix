@@ -6,7 +6,7 @@ volumeToggle.addEventListener("click", toggleVideoMute);
 video.addEventListener("ended", resetVideoPoster);
 window.addEventListener("scroll", handleScroll);
 
-video.autoplay = true;
+video.autoplay = false;
 video.volume = 0.1;
 video.muted = false;
 video.poster = require("../img/videoPlaceholder.jpg");
