@@ -14,6 +14,7 @@ function handleMouseOver() {
   const allNext = getNextAll(this);
   allPrevious.forEach(poster => poster.classList.add("previous"));
   allNext.forEach(poster => poster.classList.add("next"));
+  console.log(this.getAttribute("data-posters"));
 }
 
 function handleMouseLeave() {

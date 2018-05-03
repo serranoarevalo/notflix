@@ -13,13 +13,15 @@
     display: grid;
     width: 100%;
     grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
-    grid-gap: 10px;
+    grid-gap: 5px;
     padding: var(--containerPadding, 0px 60px);
     & .featured__movie {
       transition: transform 0.2s linear;
       transform: none;
+      cursor: pointer;
       & img {
         max-width: 100%;
+        height: 520px;
       }
       &:hover {
         transform: scale(1.2);
@@ -27,10 +29,10 @@
       }
     }
     & .featured__movie.next {
-      transform: translateX(30px);
+      transform: translateX(26px);
     }
     & .featured__movie.previous {
-      transform: translateX(-30px);
+      transform: translateX(-26px);
     }
   }
 }
