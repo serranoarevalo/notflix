@@ -4,6 +4,7 @@ module.exports = {
     require("postcss-url"),
     require("postcss-cssnext"),
     require("postcss-browser-reporter"),
-    require("postcss-reporter")
+    require("postcss-reporter"),
+    require("postcss-nested")
   ]
 };

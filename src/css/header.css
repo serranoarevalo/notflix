@@ -1,5 +1,4 @@
 .site-header {
-  background-color: transparent;
   width: 100%;
   display: flex;
   align-items: center;
@@ -10,43 +9,43 @@
   top: 0;
   width: 100%;
   z-index: 10;
-  & .site-header__logo-container {
-    & .site-header__logo {
+  .site-header__logo-container {
+    .site-header__logo {
       height: 60px;
     }
   }
-  & .site-header__nav {
+  .site-header__nav {
     flex-basis: 80%;
     margin-left: 45px;
-    & .site-header__list {
+    .site-header__list {
       display: flex;
       align-items: center;
-      & .site-header__list-item {
+      .site-header__list-item {
         margin-right: 20px;
       }
     }
   }
-  & .site-header__nav :any-link {
+  .site-header__nav :any-link {
     color: var(--grey, #e5e5e5);
     transition: color 0.1s linear;
   }
-  & .site-header__nav :any-link:hover {
+  .site-header__nav :any-link:hover {
     color: color(var(--grey, rgb(229, 229, 229)) alpha(-20%));
   }
-  & .site-header__menu {
+  .site-header__menu {
     display: flex;
     align-items: center;
-    & .site-header__item {
+    .site-header__item {
       color: white;
       font-size: 20px;
       position: relative;
       margin-left: 30px;
       cursor: pointer;
-      & .site-header__icon-wrapper {
+      .site-header__icon-wrapper {
         display: flex;
         align-items: center;
       }
-      & .site-header__notification-wrapper {
+      .site-header__notification-wrapper {
         position: absolute;
         top: -10px;
         left: 5px;
@@ -59,11 +58,11 @@
         font-size: 12px;
         background-color: var(--accent, #d32f27);
       }
-      & .site-header__search {
+      .site-header__search {
         transition: all 0.2s linear;
         width: 0px;
         height: 27px;
-        & input {
+        input {
           transition: all 0.2s linear;
           transform-origin: 100% 100%;
           font-size: 14px;
@@ -75,18 +74,18 @@
           color: white;
         }
       }
-      & .site-header__search-container {
+      .site-header__search-container {
         border: 1px solid transparent;
         padding: 3px 5px;
       }
-      & .site-header__search-container.active {
+      .site-header__search-container.active {
         border-color: rgba(255, 255, 255, 0.7);
         background-color: rgba(0, 0, 0, 0.8);
       }
-      & .site-header__search-container.active .site-header__search {
+      .site-header__search-container.active .site-header__search {
         width: 250px;
         margin-left: 10px;
-        & input {
+        input {
           width: 100%;
         }
       }
