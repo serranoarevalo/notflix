@@ -18,10 +18,27 @@
     .featured__movie {
       transition: transform 0.2s linear;
       transform: none;
+      position: relative;
       cursor: pointer;
       img {
         max-width: 100%;
         height: 520px;
+      }
+      .movie__slideshow {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+
+        * {
+          transition: opacity 0.2s linear;
+          position: absolute;
+          top: 0;
+          opacity: 0;
+        }
+        *.showing {
+          opacity: 1;
+        }
       }
       &:hover {
         transform: scale(1.2);
