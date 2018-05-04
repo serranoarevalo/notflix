@@ -29,25 +29,30 @@
         top: 0;
         height: 100%;
         width: 100%;
-        background: black;
         opacity: 0;
         transition: opacity 0.5s ease-in;
-        * {
-          transition: opacity 1s ease-in;
+        img {
+          opacity: 0;
+          transition: all 1s ease-in;
           position: absolute;
           top: 0;
-          opacity: 0;
-        }
-        *.showing {
-          opacity: 1;
-        }
-        &.showing {
-          opacity: 1;
+          display: none;
         }
       }
       &:hover {
         transform: scale(1.2);
         z-index: 5;
+        .movie__slideshow img {
+          display: inline;
+        }
+      }
+    }
+    .featured__movie.slideShow {
+      .movie__slideshow {
+        opacity: 1;
+        img.slideShow {
+          opacity: 1;
+        }
       }
     }
     .featured__movie.next {

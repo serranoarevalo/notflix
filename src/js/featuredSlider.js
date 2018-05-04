@@ -1,9 +1,12 @@
 import { getPreviousAll, getNextAll } from "./utils";
+const PREVIOUS_CLASS = "previous";
+const NEXT_CLASS = "next";
+const SHOWING_CLASS = "slideShow";
+
 const moviePosters = document.querySelectorAll(".featured__movie");
 const postersArray = Array.from(moviePosters);
 let posterInterval;
-const PREVIOUS_CLASS = "previous";
-const NEXT_CLASS = "next";
+let slideshowTimeout;
 
 postersArray.forEach(poster => {
   poster.addEventListener("mouseover", handleMouseOver);
@@ -11,49 +14,50 @@ postersArray.forEach(poster => {
 });
 
 function handleMouseOver() {
-  const posterImagesContainer = this.firstElementChild;
   const allPrevious = getPreviousAll(this);
   const allNext = getNextAll(this);
   allPrevious.forEach(poster => poster.classList.add(PREVIOUS_CLASS));
   allNext.forEach(poster => poster.classList.add(NEXT_CLASS));
-  startSlideshow(posterImagesContainer);
+  startSlideshow(this);
 }
 
 function handleMouseLeave() {
-  const posterImagesContainer = this.firstElementChild;
+  stopSlideshow(this);
   postersArray.forEach(poster =>
     poster.classList.remove(NEXT_CLASS, PREVIOUS_CLASS)
   );
-  stopSlideshow(posterImagesContainer);
 }
 
-function startSlideshow(father) {
-  const posters = Array.from(father.children);
+function startSlideshow(element) {
+  const postersContainer = element.firstElementChild;
+  const posters = Array.from(postersContainer.children);
   let currentPoster = 0;
-  posterInterval = setInterval(() => {
-    if (!father.classList.contains("showing")) {
-      father.classList.add("showing");
-    }
-    if (currentPoster === 0) {
-      posters[currentPoster].classList.add("showing");
-      currentPoster = currentPoster + 1;
-    } else if (currentPoster === posters.length) {
-      posters[currentPoster - 1].classList.remove("showing");
-      posters[0].classList.add("showing");
-      currentPoster = 1;
-    } else {
-      posters[currentPoster - 1].classList.remove("showing");
-      posters[currentPoster].classList.add("showing");
-      currentPoster = currentPoster + 1;
-    }
-  }, 2500);
+  slideshowTimeout = setTimeout(() => {
+    element.classList.add(SHOWING_CLASS);
+    posterInterval = setInterval(() => {
+      if (currentPoster === 0) {
+        posters[currentPoster].classList.add(SHOWING_CLASS);
+        currentPoster = currentPoster + 1;
+      } else if (currentPoster === posters.length) {
+        posters[currentPoster - 1].classList.remove(SHOWING_CLASS);
+        posters[0].classList.add(SHOWING_CLASS);
+        currentPoster = 1;
+      } else {
+        posters[currentPoster - 1].classList.remove(SHOWING_CLASS);
+        posters[currentPoster].classList.add(SHOWING_CLASS);
+        currentPoster = currentPoster + 1;
+      }
+    }, 1500);
+  }, 500);
 }
 
-function stopSlideshow(father) {
-  father.classList.remove("showing");
-  const posters = Array.from(father.children);
+function stopSlideshow(element) {
   clearInterval(posterInterval);
+  clearTimeout(slideshowTimeout);
+  element.classList.remove(SHOWING_CLASS);
+  const postersContainer = element.firstElementChild;
+  const posters = Array.from(postersContainer.children);
   posters.forEach(poster => {
-    poster.classList.remove("showing");
+    poster.classList.remove(SHOWING_CLASS);
   });
 }

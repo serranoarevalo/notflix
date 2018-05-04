@@ -4,7 +4,7 @@ const CLASS_NAME = "scrolled";
 document.addEventListener("DOMContentLoaded", handleScroll);
 window.addEventListener("scroll", handleScroll);
 
-function handleScroll(e) {
+function handleScroll() {
   const scrollHeight = window.scrollY;
   if (scrollHeight > 20) {
     scrolledHeader();
