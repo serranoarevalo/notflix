@@ -4,7 +4,7 @@ const moviePosters = document.querySelectorAll(".featured__movie");
 
 const postersArray = Array.from(moviePosters);
 
-let posterTimeout;
+let posterInterval;
 
 postersArray.forEach(poster => {
   poster.addEventListener("mouseover", handleMouseOver);
@@ -17,33 +17,38 @@ function handleMouseOver() {
   const allNext = getNextAll(this);
   allPrevious.forEach(poster => poster.classList.add("previous"));
   allNext.forEach(poster => poster.classList.add("next"));
-  setTimeout(() => {
-    startSlideshow(posterImagesContainer);
-  }, 500);
+  startSlideshow(posterImagesContainer);
 }
 
 function handleMouseLeave() {
   const posterImagesContainer = this.firstElementChild;
   postersArray.forEach(poster => poster.classList.remove("next", "previous"));
-  setTimeout(() => stopSlideshow(posterImagesContainer), 1000);
+  stopSlideshow(posterImagesContainer);
 }
 
 function startSlideshow(father) {
   const posters = Array.from(father.children);
-  posters.forEach((poster, index) => {
-    posterTimeout = setTimeout(() => {
-      poster.classList.add("showing");
-    }, 1000 * index);
-  });
-  setTimeout(() => {
-    posters.forEach(poster => poster.classList.remove("showing"));
-  }, 1000 * posters.length);
+  let currentPoster = 0;
+  posterInterval = setInterval(() => {
+    if (currentPoster === 0) {
+      posters[currentPoster].classList.add("showing");
+      currentPoster = currentPoster + 1;
+    } else if (currentPoster === posters.length) {
+      posters[currentPoster - 1].classList.remove("showing");
+      posters[0].classList.add("showing");
+      currentPoster = 1;
+    } else {
+      posters[currentPoster - 1].classList.remove("showing");
+      posters[currentPoster].classList.add("showing");
+      currentPoster = currentPoster + 1;
+    }
+  }, 1500);
 }
 
 function stopSlideshow(father) {
   const posters = Array.from(father.children);
-  poster.forEach(poster => {
+  clearInterval(posterInterval);
+  posters.forEach(poster => {
     poster.classList.remove("showing");
-    clearTimeout(posterTimeout);
   });
 }
