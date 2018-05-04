@@ -23,6 +23,7 @@ function handleMouseOver() {
 
 function handleMouseLeave() {
   stopSlideshow(this);
+  stopIntervals();
   postersArray.forEach(poster =>
     poster.classList.remove(NEXT_CLASS, PREVIOUS_CLASS)
   );
@@ -32,8 +33,8 @@ function startSlideshow(element) {
   const postersContainer = element.firstElementChild;
   const posters = Array.from(postersContainer.children);
   let currentPoster = 0;
-  slideshowTimeout = setTimeout(() => {
-    element.classList.add(SHOWING_CLASS);
+  element.classList.add(SHOWING_CLASS);
+  if (!posterInterval) {
     posterInterval = setInterval(() => {
       if (currentPoster === 0) {
         posters[currentPoster].classList.add(SHOWING_CLASS);
@@ -48,16 +49,20 @@ function startSlideshow(element) {
         currentPoster = currentPoster + 1;
       }
     }, 1500);
-  }, 500);
+  }
 }
 
 function stopSlideshow(element) {
-  clearInterval(posterInterval);
-  clearTimeout(slideshowTimeout);
   element.classList.remove(SHOWING_CLASS);
   const postersContainer = element.firstElementChild;
   const posters = Array.from(postersContainer.children);
   posters.forEach(poster => {
     poster.classList.remove(SHOWING_CLASS);
   });
+}
+
+function stopIntervals() {
+  clearInterval(posterInterval);
+  posterInterval = null;
+  console.log(posterInterval);
 }
