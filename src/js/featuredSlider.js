@@ -1,10 +1,9 @@
 import { getPreviousAll, getNextAll } from "./utils";
-
 const moviePosters = document.querySelectorAll(".featured__movie");
-
 const postersArray = Array.from(moviePosters);
-
 let posterInterval;
+const PREVIOUS_CLASS = "previous";
+const NEXT_CLASS = "next";
 
 postersArray.forEach(poster => {
   poster.addEventListener("mouseover", handleMouseOver);
@@ -15,14 +14,16 @@ function handleMouseOver() {
   const posterImagesContainer = this.firstElementChild;
   const allPrevious = getPreviousAll(this);
   const allNext = getNextAll(this);
-  allPrevious.forEach(poster => poster.classList.add("previous"));
-  allNext.forEach(poster => poster.classList.add("next"));
+  allPrevious.forEach(poster => poster.classList.add(PREVIOUS_CLASS));
+  allNext.forEach(poster => poster.classList.add(NEXT_CLASS));
   startSlideshow(posterImagesContainer);
 }
 
 function handleMouseLeave() {
   const posterImagesContainer = this.firstElementChild;
-  postersArray.forEach(poster => poster.classList.remove("next", "previous"));
+  postersArray.forEach(poster =>
+    poster.classList.remove(NEXT_CLASS, PREVIOUS_CLASS)
+  );
   stopSlideshow(posterImagesContainer);
 }
 
