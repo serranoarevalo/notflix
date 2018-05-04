@@ -30,6 +30,9 @@ function startSlideshow(father) {
   const posters = Array.from(father.children);
   let currentPoster = 0;
   posterInterval = setInterval(() => {
+    if (!father.classList.contains("showing")) {
+      father.classList.add("showing");
+    }
     if (currentPoster === 0) {
       posters[currentPoster].classList.add("showing");
       currentPoster = currentPoster + 1;
@@ -42,10 +45,11 @@ function startSlideshow(father) {
       posters[currentPoster].classList.add("showing");
       currentPoster = currentPoster + 1;
     }
-  }, 1500);
+  }, 2500);
 }
 
 function stopSlideshow(father) {
+  father.classList.remove("showing");
   const posters = Array.from(father.children);
   clearInterval(posterInterval);
   posters.forEach(poster => {
