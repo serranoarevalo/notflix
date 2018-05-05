@@ -64,5 +64,4 @@ function stopSlideshow(element) {
 function stopIntervals() {
   clearInterval(posterInterval);
   posterInterval = null;
-  console.log(posterInterval);
 }
