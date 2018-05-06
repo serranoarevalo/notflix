@@ -1,4 +1,4 @@
-body {
+body.player {
   background: black !important;
   overflow: hidden;
 }
@@ -20,6 +20,7 @@ body {
     transition: color 0.3s linear, opacity 0.5s ease-out;
     cursor: pointer;
     opacity: 0;
+    z-index: 3;
     &:hover {
       color: var(--grey);
     }
@@ -28,7 +29,7 @@ body {
     opacity: 0;
     transition: opacity 0.5s ease-out;
     position: absolute;
-    z-index: 10;
+    z-index: 2;
     width: 100%;
     max-width: 1350px;
     bottom: 55px;
