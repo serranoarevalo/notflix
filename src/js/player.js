@@ -12,13 +12,14 @@ let isFullScreen = false;
 
 video.autoplay = true;
 video.volume = 0.5;
-video.muted = true;
+video.muted = false;
 video.poster = require("../img/videoPlaceholder.jpg");
 
 document.addEventListener("mousemove", handleMouseMove);
 playBtn.addEventListener("click", handlePlayClick);
 fullScreenBtn.addEventListener("click", handleFullscreen);
 backButton.addEventListener("click", handleBackBtn);
+volumeBtn.addEventListener("click", handleVolumeBtn);
 
 function handleMouseMove() {
   clearTimeout(controlsInterval);
@@ -53,4 +54,14 @@ function handleFullscreen() {
 
 function handleBackBtn() {
   window.history.back();
+}
+
+function handleVolumeBtn() {
+  if (video.muted) {
+    video.muted = false;
+    this.innerHTML = '<i class="fas fa-volume-down"></i>';
+  } else {
+    video.muted = true;
+    this.innerHTML = '<i class="fas fa-volume-off"></i>';
+  }
 }
