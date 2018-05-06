@@ -3,7 +3,7 @@ const PREVIOUS_CLASS = "previous";
 const NEXT_CLASS = "next";
 const SHOWING_CLASS = "slideShow";
 
-const moviePosters = document.querySelectorAll(".featured__movie");
+const moviePosters = document.querySelectorAll(".movie-list__movie");
 const postersArray = Array.from(moviePosters);
 let posterInterval;
 let slideshowTimeout;
