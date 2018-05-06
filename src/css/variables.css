@@ -1,6 +1,6 @@
 :root {
   --bgColor: #141414;
   --accent: #d32f27;
-  --grey: #e5e5e5;
+  --grey: rgb(229, 229, 229);
   --containerPadding: 0px 60px;
 }

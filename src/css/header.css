@@ -94,5 +94,5 @@
 }
 
 .site-header.scrolled {
-  background-color: var(--black, #141414);
+  background-color: var(--bgColor);
 }
