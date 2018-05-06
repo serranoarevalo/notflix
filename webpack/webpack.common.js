@@ -11,13 +11,15 @@ const MODE = process.env.npm_lifecycle_event;
 
 const PATHS = {
   app: path.join(__dirname, "../src/js/app.js"),
+  player: path.join(__dirname, "../src/js/player.js"),
   build: path.join(__dirname, "../build"),
   styles: path.join(__dirname, "../src/css/styles.css")
 };
 
 const commonConfig = {
   entry: {
-    app: ["babel-polyfill", PATHS.app]
+    app: ["babel-polyfill", PATHS.app],
+    player: ["babel-polyfill", PATHS.player]
   },
   output: {
     path: PATHS.build,
@@ -45,7 +47,13 @@ const commonConfig = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "../src/index.html"),
-      title: "Nomflix"
+      filename: "index.html",
+      chunks: ["app"]
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "../src/view.html"),
+      filename: "view.html",
+      chunks: ["player"]
     })
   ]
 };

@@ -27,3 +27,18 @@ body.leaving {
   opacity: 0;
   transform: scale(1.03);
 }
+
+body {
+  animation: bodyEnter 0.5s ease-in;
+}
+
+@keyframes bodyEnter {
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
