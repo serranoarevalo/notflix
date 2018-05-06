@@ -18,7 +18,7 @@ video.autoplay = true;
 video.volume = 0.5;
 video.muted = false;
 video.poster = require("../img/videoPlaceholder.jpg");
-timeLeft.innerHTML = toHHMMSS(Math.floor(video.duration));
+timeLeft.innerHTML = toHHMMSS(0);
 
 document.addEventListener("mousemove", handleMouseMove);
 playBtn.addEventListener("click", handlePlayClick);
