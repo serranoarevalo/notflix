@@ -3,3 +3,4 @@ import "./searchToggle";
 import "./headerScroll";
 import "./heroVideo";
 import "./featuredSlider";
+import "./linkIntercept";
