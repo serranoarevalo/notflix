@@ -9,5 +9,5 @@ moviesArray.forEach(movie => {
 
 function handleClick() {
   body.classList.add("leaving");
-  setTimeout(() => (window.location = "/view.html"), 500);
+  setTimeout(() => (window.location.href = "view.html"), 500);
 }
