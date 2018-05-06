@@ -8,6 +8,7 @@ const playBtn = document.querySelector(".js-play");
 const volumeBtn = document.querySelector(".js-volume");
 const fullScreenBtn = document.querySelector(".js-fullscreen");
 const timeLeft = document.querySelector(".js-time-left");
+const progressBar = document.querySelector(".js-player__progress-bar");
 const SHOWING_CLASS = "showing";
 let controlsInterval;
 let isFullScreen = false;
@@ -72,4 +73,5 @@ function handleVolumeBtn() {
 
 function handleVideoProgress() {
   timeLeft.innerHTML = toHHMMSS(Math.floor(video.duration - video.currentTime));
+  progressBar.value = Math.floor(100 / video.duration * video.currentTime);
 }

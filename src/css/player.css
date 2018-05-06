@@ -69,19 +69,31 @@ body {
         padding-left: 10px;
       }
     }
-    .player__progress {
+    .player__top-bar {
       margin-bottom: 20px;
       font-size: 20px;
       text-shadow: 1px 1px 0px black;
       display: grid;
       grid-template-columns: 90% 10%;
+      grid-template-rows: 21px;
+
       .player__time-left {
         text-align: right;
       }
-      .player__progress-bar {
+      .player__progress {
         border-radius: 10px;
-        background-color: #262626;
         box-shadow: 0px 2px 1px #000;
+        height: 21px;
+        width: 100%;
+        overflow: hidden;
+        transition: all 0.1s linear;
+        &[value]::-webkit-progress-value {
+          background-color: var(--accent);
+        }
+        &[value]::-webkit-progress-bar {
+          background-color: #262626;
+          overflow: hidden;
+        }
       }
     }
   }
