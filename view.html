@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View | Nomflix</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+        crossorigin="anonymous">
+<link href="styles.css" rel="stylesheet"></head>
+<body>
+    <section class="player">
+        <span class="player__backbutton">
+            <i class="far fa-arrow-alt-circle-left"></i>
+        </span>
+        <div class="player__controls">
+            <div class="player__top-bar">
+                <progress value="0" max="100" class="js-player__progress-bar player__progress"></progress>
+                <div class="bullet js-bullet"></div>
+                <div class="player__time-left js-time-left"></div>
+            </div>
+            <div class="player__controls-bar">
+                <div class="player__item player__btn js-play">
+                    <i class="fas fa-pause"></i>
+                </div>
+                <div class="player__item player__btn js-volume">
+                    <i class="fas fa-volume-down"></i>
+                </div>
+                <div class="player__item player__info">
+                    <h4>Nicolas is awesome: The story of a god</h4>
+                </div>
+                <div class="player__item player__btn js-question">
+                    <i class="far fa-question-circle"></i>
+                </div>
+                <div class="player__item player__btn js-subs">
+                    <i class="fas fa-comment-alt"></i>
+                </div>
+                <div class="player__item player__btn js-fullscreen">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+        </div>
+        <video src="9bfd1023900e31286103369c803c7ee9.ogv" class="player__video-file"></video>
+    </section>
+<script type="text/javascript" src="player.js"></script></body>
+</html>
