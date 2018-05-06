@@ -1,4 +1,5 @@
 import "../css/styles.css";
+import { toHHMMSS } from "./utils";
 const video = document.querySelector(".player__video-file");
 const videoParent = video.parentElement;
 const backButton = document.querySelector(".player__backbutton");
@@ -15,7 +16,7 @@ video.autoplay = true;
 video.volume = 0.5;
 video.muted = false;
 video.poster = require("../img/videoPlaceholder.jpg");
-timeLeft.innerHTML = Math.floor(video.duration);
+timeLeft.innerHTML = toHHMMSS(Math.floor(video.duration));
 
 document.addEventListener("mousemove", handleMouseMove);
 playBtn.addEventListener("click", handlePlayClick);
@@ -70,5 +71,5 @@ function handleVolumeBtn() {
 }
 
 function handleVideoProgress() {
-  timeLeft.innerHTML = Math.floor(video.duration - video.currentTime);
+  timeLeft.innerHTML = toHHMMSS(Math.floor(video.duration - video.currentTime));
 }
