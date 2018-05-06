@@ -10,6 +10,18 @@ body {
     width: 100%;
     min-height: 100vh;
   }
+  .player__backbutton {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    font-size: 60px;
+    color: color(var(--grey) alpha(80%));
+    transition: color 0.3s linear;
+    cursor: pointer;
+    &:hover {
+      color: var(--grey);
+    }
+  }
   .player__controls {
     opacity: 0;
     transition: opacity 0.5s ease-out;
@@ -17,18 +29,6 @@ body {
     z-index: 10;
     width: 100%;
     height: 100%;
-    .player__backbutton {
-      position: absolute;
-      top: 40px;
-      left: 40px;
-      font-size: 60px;
-      color: color(var(--grey) alpha(80%));
-      transition: color 0.3s linear;
-      cursor: pointer;
-      &:hover {
-        color: var(--grey);
-      }
-    }
     .player__controls-bar {
       background-color: #262626;
       width: 100%;

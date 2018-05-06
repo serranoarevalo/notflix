@@ -6,6 +6,7 @@ const playerControls = document.querySelector(".player__controls");
 const playBtn = document.querySelector(".js-play");
 const volumeBtn = document.querySelector(".js-volume");
 const fullScreenBtn = document.querySelector(".js-fullscreen");
+const timeLeft = document.querySelector(".js-time-left");
 const SHOWING_CLASS = "showing";
 let controlsInterval;
 let isFullScreen = false;
@@ -14,12 +15,14 @@ video.autoplay = true;
 video.volume = 0.5;
 video.muted = false;
 video.poster = require("../img/videoPlaceholder.jpg");
+timeLeft.innerHTML = Math.floor(video.duration);
 
 document.addEventListener("mousemove", handleMouseMove);
 playBtn.addEventListener("click", handlePlayClick);
 fullScreenBtn.addEventListener("click", handleFullscreen);
 backButton.addEventListener("click", handleBackBtn);
 volumeBtn.addEventListener("click", handleVolumeBtn);
+video.addEventListener("timeupdate", handleVideoProgress);
 
 function handleMouseMove() {
   clearTimeout(controlsInterval);
@@ -64,4 +67,8 @@ function handleVolumeBtn() {
     video.muted = true;
     this.innerHTML = '<i class="fas fa-volume-off"></i>';
   }
+}
+
+function handleVideoProgress() {
+  timeLeft.innerHTML = Math.floor(video.duration - video.currentTime);
 }

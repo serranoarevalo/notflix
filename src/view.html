@@ -10,10 +10,15 @@
 </head>
 <body>
     <section class="player">
+        <span class="player__backbutton">
+            <i class="far fa-arrow-alt-circle-left"></i>
+        </span>
         <div class="player__controls">
-            <span class="player__backbutton">
-                <i class="far fa-arrow-alt-circle-left"></i>
-            </span>
+            
+            <div class="player__progress">
+                <div class="player__progress-bar"></div>
+                <div class="player__time-left js-time-left"></div>
+            </div>
             <div class="player__controls-bar">
                 <div class="player__item player__btn js-play">
                     <i class="fas fa-pause"></i>
