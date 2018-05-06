@@ -17,8 +17,9 @@ body {
     left: 40px;
     font-size: 60px;
     color: color(var(--grey) alpha(80%));
-    transition: color 0.3s linear;
+    transition: color 0.3s linear, opacity 0.5s ease-out;
     cursor: pointer;
+    opacity: 0;
     &:hover {
       color: var(--grey);
     }
@@ -76,9 +77,18 @@ body {
       display: grid;
       grid-template-columns: 90% 10%;
       grid-template-rows: 21px;
-
       .player__time-left {
         text-align: right;
+      }
+      .bullet {
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        background-color: var(--accent);
+        position: absolute;
+        z-index: 10;
+        box-shadow: 0px 2px 1px #000;
+        top: -2px;
       }
       .player__progress {
         border-radius: 10px;
@@ -86,7 +96,6 @@ body {
         height: 21px;
         width: 100%;
         overflow: hidden;
-        transition: all 0.1s linear;
         &[value]::-webkit-progress-value {
           background-color: var(--accent);
         }
@@ -97,7 +106,8 @@ body {
       }
     }
   }
-  .player__controls.showing {
+  .player__controls.showing,
+  .player__backbutton.showing {
     opacity: 1;
   }
 }

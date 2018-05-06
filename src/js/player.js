@@ -9,6 +9,7 @@ const volumeBtn = document.querySelector(".js-volume");
 const fullScreenBtn = document.querySelector(".js-fullscreen");
 const timeLeft = document.querySelector(".js-time-left");
 const progressBar = document.querySelector(".js-player__progress-bar");
+const bullet = document.querySelector(".js-bullet");
 const SHOWING_CLASS = "showing";
 let controlsInterval;
 let isFullScreen = false;
@@ -29,10 +30,11 @@ video.addEventListener("timeupdate", handleVideoProgress);
 function handleMouseMove() {
   clearTimeout(controlsInterval);
   playerControls.classList.add(SHOWING_CLASS);
-  controlsInterval = setTimeout(
-    () => playerControls.classList.remove(SHOWING_CLASS),
-    2000
-  );
+  backButton.classList.add(SHOWING_CLASS);
+  controlsInterval = setTimeout(() => {
+    playerControls.classList.remove(SHOWING_CLASS);
+    backButton.classList.remove(SHOWING_CLASS);
+  }, 2000);
 }
 
 function handlePlayClick() {
@@ -72,6 +74,10 @@ function handleVolumeBtn() {
 }
 
 function handleVideoProgress() {
+  const progressNumber = Math.floor(100 / video.duration * video.currentTime);
   timeLeft.innerHTML = toHHMMSS(Math.floor(video.duration - video.currentTime));
   progressBar.value = Math.floor(100 / video.duration * video.currentTime);
+  bullet.style.left = `${Math.floor(
+    1215 / video.duration * video.currentTime - 20
+  )}px`;
 }
